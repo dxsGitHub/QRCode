@@ -98,7 +98,13 @@
         [self.view.layer insertSublayer:captureLayer atIndex:0];
         //开始捕获
         [_captureSession startRunning];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_captureSession stopRunning];
+            [self backToPrefixViewController];
+        });
     }
+    
 }
 
 

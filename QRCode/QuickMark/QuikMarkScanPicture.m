@@ -85,8 +85,9 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    [[self getCurrentVC] dismissViewControllerAnimated:YES completion:^{
-        [self scanQRCodeFromPhotosInTheAlbum:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
+     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self scanQRCodeFromPhotosInTheAlbum:image];
     }];
 }
 
